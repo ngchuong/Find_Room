@@ -1,0 +1,97 @@
+$color-white: #ffffff;
+$color-gray: #c2c2c2;
+$size-title: 28px;
+$size-content: 20px;
+$size-price: 26px;
+
+.core-home {
+    width: 100%;
+    height: auto;
+
+    .search {
+        width: 100%;
+        background-color: red;
+    }
+
+    .container {
+        width: inherit;
+        height: 220px;
+        background-color: $color-white;
+        border: solid 1px $color-gray;
+        border-radius: 5px;
+        margin-top: 10px;
+
+        &:hover {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+        
+        .image {
+            width: 220px;
+            height: 220px;
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .main-content {
+            background-color: $color-white;
+            margin: 0 auto;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            // padding: 10px 0px;
+            height: inherit;
+
+            .title {
+                font-size: $size-title;
+                margin: 10px 0px;
+                text-transform: uppercase;
+                color: red;
+            }
+
+            .address {
+                margin: 10px 0px;
+                font-size: $size-content;
+            }
+
+            .icon {
+                margin: 10px 0px;
+                display: flex;
+                justify-content: flex-start;
+                font-size: $size-content;
+
+                .bed {
+                    // margin-left: 20px;
+                }
+
+                .bath {
+                    margin-left: 20px;
+                }
+
+                .square {
+                    margin-left: 20px;
+                }
+            }
+
+            .price {
+                margin: 10px 0px;
+                color: blue;
+                font-size: $size-price;
+            }
+
+            .infor {
+                display: flex;
+                justify-content: space-between;
+                font-size: $size-content;
+                margin-right: 20px;
+
+                .date {
+
+                }
+
+                .phone {
+                }
+            }
+        }
+    }
+}
