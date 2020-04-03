@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../asset/image/logoWebsite.png';
 import './header.scss';
-import Catalog from '../../core/Catalog/Catalog';
+import Catalog from '../core/Catalog/Catalog';
 
 const Header = () => (
     <div className="main-header">

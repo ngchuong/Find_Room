@@ -1,6 +1,6 @@
 import React from 'react';
 import './home.scss';
-import Input from '../../core/Input/Input';
+import Input from '../../components/core/Input/Input';
 import 'font-awesome/css/font-awesome.min.css';
 import dog from '../../asset/image/dog.jpg';
 import Combobox from 'react-widgets/lib/Combobox';
