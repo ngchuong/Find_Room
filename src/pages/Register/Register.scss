@@ -1,0 +1,45 @@
+.core-register {
+    width: 100vw;
+    height: 40vh;
+    margin: 40px 0;
+    z-index: 0;
+
+    .container-register {
+        width: 70%;
+        height: auto;
+        background-color: #fff;
+        box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),
+                    0px 2px 2px 0px rgba(0,0,0,0.14),
+                    0px 1px 5px 0px rgba(0,0,0,0.12);
+        border-radius: 8px;
+        margin: 0 auto;
+
+        .form-register {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+
+            .title-register {
+                text-align: center;
+                padding-bottom: 10px;
+                label {
+                    font-size: 28px;
+                    font-weight: 500;
+                    color: #444;
+                }
+            }
+
+            .content-register {
+                
+            }
+
+            .btn-register {
+                transform: translate(50%, 0);
+                margin: 10px 0px;
+            }
+            .more-register {
+                transform: translate(45%, 0);
+            }
+        }
+    }
+}

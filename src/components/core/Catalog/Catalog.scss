@@ -1,4 +1,5 @@
 $font-size: 1.4rem;
+$font-color: rgb(62,97,126);
 
 .core-catalog {
     width: auto;
@@ -12,7 +13,8 @@ $font-size: 1.4rem;
     .catalog-content {
         text-decoration: none;
         position: relative;
-        color: white;
+        color: $font-color;
+        font-weight: 600;
 
         &::after {
             content: '';

@@ -7,6 +7,8 @@ $size-price: 26px;
 .core-home {
     width: 100%;
     height: auto;
+    z-index: 0;
+    margin-bottom: 20px;
 
     .search {
         width: 100%;
@@ -20,6 +22,7 @@ $size-price: 26px;
         border: solid 1px $color-gray;
         border-radius: 5px;
         margin-top: 10px;
+        overflow: hidden;
 
         &:hover {
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

@@ -1,0 +1,58 @@
+$color-submit: #3E617E;
+$color-cancel: #fff;
+$color-hover: #104E8B;
+
+.core-button {
+    .btn {
+        // box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2);
+        box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),
+                    0px 2px 2px 0px rgba(0,0,0,0.14),
+                    0px 1px 5px 0px rgba(0,0,0,0.12);
+        border-radius: 8px;
+        font-weight: 600;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        margin-right: 2px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .btn-submit {
+        @extend .btn;
+        background-color: $color-submit;
+        color: $color-cancel;
+
+        &:hover {
+            background-color: $color-hover;
+        }
+
+        
+    }
+
+    .btn-cancel {
+        @extend .btn;
+        background-color: $color-cancel;
+        color: $color-submit;
+        border: 1px solid $color-submit;
+
+        &:hover {
+            color: $color-hover;
+        }
+    }
+
+    .btn-login {
+        @extend .btn-submit;
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+
+    .btn-post {
+        @extend .btn-cancel;
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+
+}

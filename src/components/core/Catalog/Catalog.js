@@ -1,10 +1,10 @@
 import React from 'react';
 import './Catalog.scss';
 
-const Catalog = () => (
-    <div className="core-catalog">
-        <a className="catalog-content" href="google.com">Thuê nhà</a>
-    </div>
+const Catalog = ({title}) => (
+    <span className="core-catalog">
+        <a className="catalog-content" href="google.com">{title}</a>
+    </span>
 )
 
 export default Catalog;
