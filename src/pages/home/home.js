@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Home.scss';
+import './home.scss';
 import Input from '../../components/core/Input/Input';
 import 'font-awesome/css/font-awesome.min.css';
 import dog from '../../asset/image/dog.jpg';
