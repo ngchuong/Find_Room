@@ -1,9 +1,6 @@
-const rootReducer = (state = {}, action) => {
-  switch (action.type) {
-     case 'GET_NEWS':
-        return { ...state, loading: true };
-     default:
-        return state;
-   }
-};
-export default rootReducer;
+import { combineReducers } from "redux";
+import rooms from './rooms';
+
+export default combineReducers({
+	rooms,
+})

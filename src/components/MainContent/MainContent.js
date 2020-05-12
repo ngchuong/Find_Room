@@ -1,14 +1,14 @@
 import React from 'react';
 import './MainContent.scss';
-import Home from '../../pages/home/home.js';
+import Room from '../../containers/Room';
 import LoginPage from '../../pages/Login/LoginPage.js';
 import RegisterPage from '../../pages/Register/Register.js';
 const MainContent = () => (
     <div className="main-content">
         <div className="container">
-            {/* <Home /> */}
+            <Room />
             {/* <LoginPage /> */}
-            <RegisterPage />
+            {/* <RegisterPage /> */}
         </div>
     </div>
 )
