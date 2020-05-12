@@ -1,0 +1,10 @@
+AD Windows login: chuongng
+LDAP account: chuongng - eGroupware, Proxy, Redmine, Prismy, SVN
+Email account: chuong.nguyengiang@toshiba-tsdv.com
+
+eGroupware: shrek.tsdv.com.vn/egroupware
+wiki: shrek.tsdv.com.vn/wiki
+
+set Proxy: 
+	npm config set proxy http://user:pwd@proxy-tsdv.com.vn:3128
+	npm config set https-proxy http://user:pwd@proxy-tsdv.com.vn:3128
