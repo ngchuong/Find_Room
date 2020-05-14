@@ -5,10 +5,8 @@ import 'font-awesome/css/font-awesome.min.css';
 import dog from '../../asset/image/dog.jpg';
 
 function Home({ getListRooms, listRoom }) {
-
     const [arrPagination, setArrPagination] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-
 
     const limitRecordOfPage = 5;
     const limitPage = 5;
@@ -21,19 +19,17 @@ function Home({ getListRooms, listRoom }) {
     // let bodyPagination = null;
     let endPagination = <a href="/#">Last</a>;
 
-
-
     useEffect(() => {
         getListRooms();
     }, [getListRooms])
 
     useEffect(() => {
         if (listRoom.length > 0) {
-            
-                renderPagination(currentPage);
-           
+
+            renderPagination(currentPage);
+
         }
-    }, [listRoom,currentPage])
+    }, [listRoom, currentPage])
 
     function showPage(selectedPage) {
         if (currentPage === selectedPage) return;
@@ -62,12 +58,10 @@ function Home({ getListRooms, listRoom }) {
             startIndex = 1;
             endIndex = totalPage;
         }
-
         let arr = [];
         for (let i = startIndex; i <= endIndex; i++) {
             arr.push(i);
         }
-
         setArrPagination(arr);
     }
 
@@ -76,11 +70,14 @@ function Home({ getListRooms, listRoom }) {
     ))
 
     const newListRoom = listRoom.slice((currentPage - 1) * limitRecordOfPage, currentPage * limitRecordOfPage);
-
+    if (typeof newListRoom[0] !== "undefined") {
+        console.log(newListRoom[0].path)
+    }
     const showListRoom = newListRoom.map((room, index) => (
         <div className="container" key={index}>
             <div className="image">
-                <img width="200px" height="200px" src={dog} alt="no-img" />
+                <img width="150px" height="200px" src={JSON.parse(room.path)[0]} alt="no-img" />
+                <span className="image-total" >{JSON.parse(room.path).length}</span>
             </div>
             <div className="main-content">
                 <label className="title">{room.title}</label>
