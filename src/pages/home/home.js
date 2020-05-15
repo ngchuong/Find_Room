@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './home.scss';
 import Input from '../../components/core/Input/Input';
 import 'font-awesome/css/font-awesome.min.css';
-import dog from '../../asset/image/dog.jpg';
+import { Redirect } from 'react-router-dom';
 
 function Home({ getListRooms, listRoom }) {
     const [arrPagination, setArrPagination] = useState([]);
@@ -25,16 +25,14 @@ function Home({ getListRooms, listRoom }) {
 
     useEffect(() => {
         if (listRoom.length > 0) {
-
             renderPagination(currentPage);
-
         }
     }, [listRoom, currentPage])
 
     function showPage(selectedPage) {
         if (currentPage === selectedPage) return;
         setCurrentPage(selectedPage);
-        renderPagination(selectedPage);
+        renderPagination(currentPage);
     }
 
     function renderPagination(currentPage) {
