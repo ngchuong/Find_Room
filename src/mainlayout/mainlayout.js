@@ -4,7 +4,7 @@ import Footer from '../components/Footer/footer';
 import MainContent from '../components/MainContent/MainContent';
 
 const MainLayout = () => (
-    <div id = "main-layout">
+    <div id="main-layout">
         <Header />
         <MainContent />
         <Footer />
