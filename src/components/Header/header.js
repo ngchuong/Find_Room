@@ -5,7 +5,7 @@ import Catalog from '../core/Catalog/Catalog';
 import Button from '../core/Button/Button';
 
 import {
-
+    NavLink,
     Redirect,
     useHistory,
 } from "react-router-dom";
@@ -25,6 +25,7 @@ const Header = () => {
         <div className="main-header">
             <div className="main-sub-header">
                 <div className="header-logo">
+                    <Redirect to="/" />
                     <img className="header-img-logo" src={logo} alt="no-img" />
                 </div>
                 <div className="header-right">

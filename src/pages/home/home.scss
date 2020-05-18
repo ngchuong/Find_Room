@@ -13,7 +13,12 @@ $size-price: 26px;
 
     .search {
         width: 100%;
-        background-color: red;
+        background-color: #ddd;
+        height: 100px;
+
+        span {
+            margin-top: 200px;
+        }
     }
 
     .list-item {

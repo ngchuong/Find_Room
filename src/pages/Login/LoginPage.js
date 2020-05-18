@@ -3,9 +3,10 @@ import './LoginPage.scss';
 import Input from '../../components/core/Input/Input';
 import Button from '../../components/core/Button/Button';
 
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
-function LoginPage() {
+function LoginPage({users}) {
+    console.log(users)
     const [txtUserName, setTxtUserName] = useState('');
     const [txtPwd, setTxtPwd] = useState('');
 
@@ -33,9 +34,7 @@ function LoginPage() {
     }
     let isLogin = localStorage.getItem('userInfo');
     if (isLogin) {
-        return (
-            <Redirect to="/" />
-        )
+        window.location.href = "http://localhost:3000";
     }
     return (
         <div className="core-login">
@@ -63,11 +62,19 @@ function LoginPage() {
 
                     </div>
                     <div className="btn-login">
-                        <Button handleClick={onLogin} title={'Đăng nhập'} cls={'btn-submit'} />
-                        <Button title={'Quay về'} cls={'btn-cancel'} />
+                        <Button
+                            handleClick={onLogin}
+                            title={'Đăng nhập'}
+                            cls={'btn-submit'}
+                            autofocus={true}
+                        />
+                        <Button
+                            title={'Quay về'}
+                            cls={'btn-cancel'}
+                        />
                     </div>
                     <div className="more-login">
-                        <label>Bạn chưa có tài khoản ? <a href="google.com">Đăng ký</a></label>
+                        <label>Bạn chưa có tài khoản ? <NavLink to="/register">Đăng ký</NavLink></label>
                     </div>
                 </div>
             </div>

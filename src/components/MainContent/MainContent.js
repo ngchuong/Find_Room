@@ -1,16 +1,15 @@
 import React from 'react';
 import './MainContent.scss';
 import Room from '../../containers/Room';
-import LoginPage from '../../pages/Login/LoginPage.js';
+import PageLogin from '../../containers/ContainerLogin.js';
+import PageRegister from '../../containers/ContainerRegisterUser.js';
+// import LoginPage from '../../pages/Login/LoginPage.js';
 import RegisterPage from '../../pages/Register/Register.js';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    Redirect,
-    useHistory,
-    useLocation
+
 } from "react-router-dom";
 
 const MainContent = () => (
@@ -19,10 +18,9 @@ const MainContent = () => (
             <Router>
                 <Switch>
                     <Route path="/" exact component={Room} />
-                    <Route path="/login" component={LoginPage} />
-                    <Route path="/register">
-                        <RegisterPage />
-                    </Route>
+                    <Route path="/login" component={PageLogin} />
+                    <Route path="/register" component={PageRegister} />
+
                 </Switch>
             </Router>
         </div>

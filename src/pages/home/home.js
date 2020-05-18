@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './home.scss';
 import Input from '../../components/core/Input/Input';
 import 'font-awesome/css/font-awesome.min.css';
+// import Combobox from 'react-widgets/lib/Combobox';
+import Combobox from '../../components/core/ComboBox/ComboBox';
 import { Redirect } from 'react-router-dom';
 
 function Home({ getListRooms, listRoom }) {
@@ -68,9 +70,9 @@ function Home({ getListRooms, listRoom }) {
     ))
 
     const newListRoom = listRoom.slice((currentPage - 1) * limitRecordOfPage, currentPage * limitRecordOfPage);
-    if (typeof newListRoom[0] !== "undefined") {
-        console.log(newListRoom[0].path)
-    }
+    // if (typeof newListRoom[0] !== "undefined") {
+    //     console.log(newListRoom[0].path)
+    // }
     const showListRoom = newListRoom.map((room, index) => (
         <div className="container" key={index}>
             <div className="image">
@@ -94,19 +96,32 @@ function Home({ getListRooms, listRoom }) {
         </div>
     ))
 
+    const arr = [
+        {
+            name: "123",
+            value: "123"
+        },
+        {
+            name: "234",
+            value: "234"
+        }
+    ]
     return (
         <div className="core-home">
             <div className="search">
-                {/* <Input /> */}
-                {/* <Combobox
-                        data={dummy}
-                        defaultValue={"Toan quoc"}
-                    disabled={["red", "purple"]}
-                    /> */}
+                <span>
+                    <Combobox
+                        data={arr}
+                    />
+                </span>
+                <span>
+                    <Combobox
+                        data={arr}
+                    />
+                </span>
             </div>
             <div className="list-item">
                 {showListRoom}
-
             </div>
             <div className="pagination">
                 {startPagination}
