@@ -89,7 +89,7 @@ function Home({ getListRooms, listRoom }) {
                 </div>
                 <label className="price">Giá: {room.price} VND</label>
                 <div className="infor">
-                    <label className="date">Ngày đăng: {room.date_created}</label>
+                    <label className="date">Ngày đăng: {room.date_created.slice(0, 10)}</label>
                     <label className="phone"><i className="fa fa-phone"> {room.phone_number}</i></label>
                 </div>
             </div>

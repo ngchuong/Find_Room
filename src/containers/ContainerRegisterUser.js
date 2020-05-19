@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchtoProps = {
-    addUsers: addUsers.start,
+    createUser: addUsers.start,
 }
 
 const PageRegister = connect(

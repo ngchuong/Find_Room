@@ -24,8 +24,9 @@ export const getUsers = {
 };
 
 export const addUsers = {
-    start: () => ({
+    start: (user) => ({
         type: ADD_USER_START,
+        payload:user,
     }),
 
     succeed: (result) => ({

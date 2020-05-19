@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LoginPage.scss';
 import Input from '../../components/core/Input/Input';
 import Button from '../../components/core/Button/Button';
 
 import { Redirect, NavLink } from 'react-router-dom';
 
-function LoginPage({users}) {
+function LoginPage({ getUsers, users }) {
+    useEffect(() => {
+        getUsers();
+    },[])
+
     console.log(users)
     const [txtUserName, setTxtUserName] = useState('');
     const [txtPwd, setTxtPwd] = useState('');
@@ -23,8 +27,19 @@ function LoginPage({users}) {
 
     function onLogin(e) {
         e.preventDefault();
-        console.log(txtUserName)
-        console.log(txtPwd)
+        if (users) {
+            for(let i = 0; i < users.length; i++) {
+                if(users[i].phone_number && users[i].password) {
+                    localStorage.setItem("userInfo", JSON.stringify({
+                        username: txtUserName,
+                        password: txtPwd,
+                    }))
+                    window.location.href = "http://localhost:3000";
+
+                    console.log("oke!");
+                }
+            }
+        }
         if (txtUserName === "admin" && txtPwd === "123") {
             localStorage.setItem("userInfo", JSON.stringify({
                 username: txtUserName,
@@ -32,10 +47,10 @@ function LoginPage({users}) {
             }))
         }
     }
-    let isLogin = localStorage.getItem('userInfo');
-    if (isLogin) {
-        window.location.href = "http://localhost:3000";
-    }
+    // let isLogin = localStorage.getItem('userInfo');
+    // if (isLogin) {
+    //     window.location.href = "http://localhost:3000";
+    // }
     return (
         <div className="core-login">
             <div className="container-login">

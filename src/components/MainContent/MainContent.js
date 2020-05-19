@@ -19,7 +19,7 @@ const MainContent = () => (
                 <Switch>
                     <Route path="/" exact component={Room} />
                     <Route path="/login" component={PageLogin} />
-                    <Route path="/register" component={PageRegister} />
+                    <Route path="/register" exact component={PageRegister} />
 
                 </Switch>
             </Router>
