@@ -8,9 +8,9 @@ import { Redirect, NavLink } from 'react-router-dom';
 function LoginPage({ getUsers, users }) {
     useEffect(() => {
         getUsers();
-    },[])
+    }, [])
 
-    console.log(users)
+    // console.log(users)
     const [txtUserName, setTxtUserName] = useState('');
     const [txtPwd, setTxtPwd] = useState('');
 
@@ -28,8 +28,8 @@ function LoginPage({ getUsers, users }) {
     function onLogin(e) {
         e.preventDefault();
         if (users) {
-            for(let i = 0; i < users.length; i++) {
-                if(users[i].phone_number && users[i].password) {
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].phone_number && users[i].password) {
                     localStorage.setItem("userInfo", JSON.stringify({
                         username: txtUserName,
                         password: txtPwd,
@@ -59,22 +59,24 @@ function LoginPage({ getUsers, users }) {
                         <label>Đăng nhập</label>
                     </div>
                     <div className="content-login">
-                        <Input
-                            name={"userName"}
-                            placeholderOfInput={'Số điện thoại'}
-                            value={txtUserName}
-                            onChange={onChangeInput}
-                            type={"text"}
-                        />
-
-                        <Input
-                            name={"password"}
-                            placeholderOfInput={'Mật khẩu'}
-                            value={txtPwd}
-                            onChange={onChangeInput}
-                            type={"password"}
-                        />
-
+                        <div>
+                            <Input
+                                name={"userName"}
+                                placeholderOfInput={'Số điện thoại'}
+                                value={txtUserName}
+                                onChange={onChangeInput}
+                                type={"text"}
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                name={"password"}
+                                placeholderOfInput={'Mật khẩu'}
+                                value={txtPwd}
+                                onChange={onChangeInput}
+                                type={"password"}
+                            />
+                        </div>
                     </div>
                     <div className="btn-login">
                         <Button

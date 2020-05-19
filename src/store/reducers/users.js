@@ -9,8 +9,8 @@ function requestUsersSuccess(state, users) {
     return users;
 }
 
-function addUsersSuccess(state, users) {
-    return users;
+function addUsersSuccess(state, payload) {
+    return [...state, payload];
 }
 
 export default createReducer([], {

@@ -17,9 +17,7 @@
         .form-login {
             padding: 15px;
             display: flex;
-            // justify-content: center;
             flex-direction: column;
-            // background-color: red;
 
             .title-login {
                 text-align: center;
@@ -32,7 +30,9 @@
             }
 
             .content-login {
-                
+                div {
+                    margin-bottom: 4px;
+                }
             }
 
             .btn-login {

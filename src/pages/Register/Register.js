@@ -3,6 +3,7 @@ import './Register.scss';
 import Input from '../../components/core/Input/Input';
 import Button from '../../components/core/Button/Button';
 import { NavLink } from 'react-router-dom';
+import DialogRender from '../../containers/Dialog';
 
 function RegisterPage({ createUser }) {
     const [txtUserName, setTxtUserName] = useState('');
@@ -37,9 +38,7 @@ function RegisterPage({ createUser }) {
                 txtEmail,
                 txtPwd,
             }
-            console.log(params);
             createUser(params);
-
         }
 
     }
@@ -51,20 +50,24 @@ function RegisterPage({ createUser }) {
                         <label>Đăng ký</label>
                     </div>
                     <div className="content-register">
-                        <Input
-                            name={"user_name"}
-                            placeholderOfInput={'Tên người dùng'}
-                            value={txtUserName}
-                            onChange={onChangeInput}
-                            type={"text"}
-                        />
-                        <Input
-                            name={"phone_number"}
-                            placeholderOfInput={'Số điện thoại'}
-                            value={txtPhoneNumber}
-                            onChange={onChangeInput}
-                            type={"number"}
-                        />
+                        <div>
+                            <Input
+                                name={"user_name"}
+                                placeholderOfInput={'Tên người dùng'}
+                                value={txtUserName}
+                                onChange={onChangeInput}
+                                type={"text"}
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                name={"phone_number"}
+                                placeholderOfInput={'Số điện thoại'}
+                                value={txtPhoneNumber}
+                                onChange={onChangeInput}
+                                type={"number"}
+                            />
+                        </div>
                         <Input
                             name={"email"}
                             placeholderOfInput={'Email'}
@@ -72,21 +75,24 @@ function RegisterPage({ createUser }) {
                             onChange={onChangeInput}
                             type={"text"}
                         />
-                        <Input
-                            name={"password"}
-                            placeholderOfInput={'Mật khẩu'}
-                            value={txtPwd}
-                            onChange={onChangeInput}
-                            type={"text"}
-                        />
-                        <Input
-                            name={"repassword"}
-                            value={txtRePwd}
-                            placeholderOfInput={'Nhập lại mật khẩu'}
-                            onChange={onChangeInput}
-                            type={"text"}
-                        />
-
+                        <div>
+                            <Input
+                                name={"password"}
+                                placeholderOfInput={'Mật khẩu'}
+                                value={txtPwd}
+                                onChange={onChangeInput}
+                                type={"text"}
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                name={"repassword"}
+                                value={txtRePwd}
+                                placeholderOfInput={'Nhập lại mật khẩu'}
+                                onChange={onChangeInput}
+                                type={"text"}
+                            />
+                        </div>
                     </div>
                     <div className="btn-register">
                         <Button handleClick={onRegister} title={'Đăng ký'} cls={'btn-submit'} />
@@ -97,6 +103,7 @@ function RegisterPage({ createUser }) {
                     </div>
                 </div>
             </div>
+            <DialogRender />
         </div>
     )
 }
