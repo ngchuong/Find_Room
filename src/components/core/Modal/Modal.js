@@ -41,13 +41,9 @@ function ModalForm({ data, isOpen, isClose }) {
 
     }
 
-
-
     let newData = [];
     if (data.length > 0) {
-        console.log(data);
         for (const key in data[0]) {
-
             newData = [...newData, key];
         }
     }
@@ -73,7 +69,7 @@ function ModalForm({ data, isOpen, isClose }) {
                         {newData.map((item, index) => {
                             if (item === "title") {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className="col-25">
                                             <span>{item}</span>
                                         </div>
@@ -91,7 +87,7 @@ function ModalForm({ data, isOpen, isClose }) {
                                 item === "bathroom" ||
                                 item === "price") {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className="col-25">
                                             <span>{item}</span>
                                         </div>
@@ -109,7 +105,7 @@ function ModalForm({ data, isOpen, isClose }) {
                             }
                             if (item === "path") {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className="col-25">
                                             <span>Image</span>
                                         </div>
@@ -121,7 +117,7 @@ function ModalForm({ data, isOpen, isClose }) {
                             }
                             if (item === "type_room") {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className="col-25">
                                             <span>{item}</span>
                                         </div>

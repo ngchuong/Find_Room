@@ -1,9 +1,9 @@
 import React from 'react';
 import './Catalog.scss';
 
-const Catalog = ({title}) => (
+const Catalog = ({ title, handleClick }) => (
     <span className="core-catalog">
-        <a className="catalog-content" href="google.com">{title}</a>
+        <label onClick={handleClick} className="catalog-content">{title}</label>
     </span>
 )
 

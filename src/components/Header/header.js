@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import logo from '../../asset/image/logo2.png';
 import './header.scss';
 import Catalog from '../core/Catalog/Catalog';
@@ -10,8 +10,14 @@ import {
     Redirect,
 } from "react-router-dom";
 
-const Header = ({ listRoom }) => {
+const Header = ({ listRoom, changeTypeRoom }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [typeRoom, setTypeRoom] = useState(null);
+
+    useEffect(() => {
+        changeTypeRoom(typeRoom);
+    }, [typeRoom])
+
     const redirectPageLogin = () => {
         // return <Redirect to="/login" />
         if (!isLogin) {
@@ -25,6 +31,12 @@ const Header = ({ listRoom }) => {
         window.location.href = "http://localhost:3000";
     }
 
+    const changeTypeRoom1 = () => {
+        setTypeRoom(1);
+    }
+    const changeTypeRoom2 = () => {
+        setTypeRoom(2);
+    }
     const openModal = useCallback(() => {
         setIsModalVisible(true);
     }, [])
@@ -41,10 +53,16 @@ const Header = ({ listRoom }) => {
                 <div className="header-right">
                     <span className="catalog">
                         <span>
-                            <Catalog title="thuê nhà" />
+                            <Catalog
+                                handleClick={changeTypeRoom1}
+                                title="thuê nhà"
+                            />
                         </span>
                         <span>
-                            <Catalog title="mua nhà" />
+                            <Catalog
+                                handleClick={changeTypeRoom2}
+                                title="mua nhà"
+                            />
                         </span>
                     </span>
                     <span className="button">

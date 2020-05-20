@@ -7,9 +7,16 @@ import Combobox from '../../components/core/ComboBox/ComboBox';
 import { Redirect } from 'react-router-dom';
 import Button from '../../components/core/Button/Button';
 
-function Home({ getListRooms, listRoom }) {
+import ConfigAddress from '../../configJson/configAddress.json';
+import ConfigPrice from '../../configJson/configPrice.json';
+
+const dataAddress = ConfigAddress.arrAddress;
+const dataPrice = ConfigPrice.arrPrice;
+
+function Home({ getListRooms, listRoom, typeRoom }) {
     const [arrPagination, setArrPagination] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+
 
     const limitRecordOfPage = 5;
     const limitPage = 5;
@@ -74,110 +81,69 @@ function Home({ getListRooms, listRoom }) {
         <a className={(item === currentPage) ? "active" : ""} key={index} href={item} onClick={() => showPage(item)}>{item}</a>
     ))
 
-    const newListRoom = listRoom.slice((currentPage - 1) * limitRecordOfPage, currentPage * limitRecordOfPage);
-    // if (typeof newListRoom[0] !== "undefined") {
-    //     console.log(newListRoom[0].path)
-    // }
-    const showListRoom = newListRoom.map((room, index) => (
-        <div className="container" key={index}>
-            <div className="image">
-                <img width="150px" height="200px" src={JSON.parse(room.path)[0]} alt="no-img" />
-                <span className="image-total" >{JSON.parse(room.path).length}</span>
-            </div>
-            <div className="main-content">
-                <label className="title">{room.title}</label>
-                <label className="address">{room.address}</label>
-                <div className="icon">
-                    <label className="bed"><i className="fa fa-bed">: {room.bed}</i></label>
-                    <label className="bath"><i className="fa fa-bath">: {room.bathroom}</i></label>
-                    <label className="square"><i className="fa fa-square"> {room.acreage} m2</i></label>
-                </div>
-                <label className="price">Giá: {room.price} VND</label>
-                <div className="infor">
-                    <label className="date">Ngày đăng: {room.date_created.slice(0, 10)}</label>
-                    <label className="phone"><i className="fa fa-phone"> {room.phone_number}</i></label>
-                </div>
-            </div>
-        </div>
-    ))
+    const showDetail = (e) => {
 
-    const arrAddress = [
-        {
-            name: "Ba Đình",
-            value: "Ba Đình"
-        },
-        {
-            name: "Bắc Từ Liêm",
-            value: "Bắc Từ Liêm",
-        },
-        {
-            name: "Cầu Giấy",
-            value: "Cầu Giấy",
-        },
-        {
-            name: "Đống Đa",
-            value: "Đống Đa",
-        },
-        {
-            name: "Hà Đông",
-            value: "Hà Đông",
-        },
-        {
-            name: "Hai Bà Trưng",
-            value: "Hai Bà Trưng",
-        },
-        {
-            name: "Hoàn Kiếm",
-            value: "Hoàn Kiếm",
-        },
-        {
-            name: "Hoàng Mai",
-            value: "Hoàng Mai",
-        },
-        {
-            name: "Long Biên",
-            value: "Long Biên",
-        },
-        {
-            name: "Nam Từ Liêm",
-            value: "Nam Từ Liêm",
-        },
-        {
-            name: "Tây Hồ",
-            value: "Tây Hồ",
-        },
-        {
-            name: "Thanh Xuân",
-            value: "Thanh Xuân",
-        },     
-    ]
-    const arrPrice = [
-        {
-            name: "1.000.000",
-            value: "1000000",
-        },
-        {
-            name: "2.000.000",
-            value: "2000000",
-        },
-        {
-            name: "3.000.000",
-            value: "3000000",
-        },
-    ]
+    }
+    let newListRoom = listRoom.slice((currentPage - 1) * limitRecordOfPage, currentPage * limitRecordOfPage);
+    let newListRoomByType = [];
+    for (let i = 0; i < newListRoom.length; i++) {
+        if (typeRoom == newListRoom[i].type_room) {
+            newListRoomByType = [...newListRoomByType, newListRoom[i]];
+        }
+    }
+    if (typeRoom !== null) {
+        newListRoom = newListRoomByType;
+    }
+
+    console.log(newListRoom);
+
+    let titleContent = "";
+    if (typeRoom === 1) {
+        titleContent = "Danh sách phòng cho thuê";
+    } else if (typeRoom === 2) {
+        titleContent = "Danh sách phòng để bán";
+    } else {
+        titleContent = "Danh sách tất cả các phòng";
+    }
+    const showListRoom = newListRoom.map((room, index) => {
+        return (
+            <div className="container" key={index}>
+                <div className="image">
+                    <img width="150px" height="200px" src={JSON.parse(room.path)[0]} alt="no-img" />
+                    <span className="image-total" >{JSON.parse(room.path).length}</span>
+                </div>
+                <div className="main-content">
+                    <label className="title" onClick={showDetail(room.id)}>{room.title}</label>
+                    <label className="address">{room.address}</label>
+                    <div className="icon">
+                        <label className="bed"><i className="fa fa-bed">: {room.bed}</i></label>
+                        <label className="bath"><i className="fa fa-bath">: {room.bathroom}</i></label>
+                        <label className="square"><i className="fa fa-square"> {room.acreage} m2</i></label>
+                    </div>
+                    <label className="type-room">Kiểu phòng: {(room.type_room === "1") ? "Cho thuê" : "Bán"}</label>
+                    <label className="price">Giá: {room.price} VND</label>
+                    <div className="infor">
+                        <label className="date">Ngày đăng: {room.date_created.slice(0, 10)}</label>
+                        <label className="phone"><i className="fa fa-phone"> {room.phone_number}</i></label>
+                    </div>
+                </div>
+            </div>
+        )
+    })
+
     return (
         <div className="core-home">
             <div className="search">
                 <span>
                     <Combobox
                         optionDefault={"Chọn quận"}
-                        data={arrAddress}
+                        data={dataAddress}
                     />
                 </span>
                 <span>
                     <Combobox
                         optionDefault={"Chọn giá"}
-                        data={arrPrice}
+                        data={dataPrice}
                     />
                 </span>
                 <span>
@@ -189,6 +155,7 @@ function Home({ getListRooms, listRoom }) {
                 </span>
             </div>
             <div className="list-item">
+                <div className="label-content">{titleContent}</div>
                 {showListRoom}
             </div>
             <div className="pagination">

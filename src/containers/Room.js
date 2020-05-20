@@ -4,6 +4,7 @@ import { getListRoom } from '../actions/Room.js';
 
 const mapStateToProps = (state) => ({
     listRoom: state.rooms,
+    typeRoom: state.typeRoom
 })
 
 const mapDispatchtoProps = {
