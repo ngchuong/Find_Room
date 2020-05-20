@@ -1,0 +1,155 @@
+.ReactModal__Overlay--after-open {
+	background-color: rgba(0, 0, 0, 0.15) !important;
+}
+#container-modal {
+	position: relative;
+}
+.modal {
+	.modal-header {
+		border-bottom: 1px solid #777;
+		margin-bottom: 20px;
+		padding-bottom: 15px;
+		height: 20%;
+
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+			margin-top: -22px;
+			float: right;
+
+			&:focus, &:hover {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		}
+
+		label {
+			margin-top: -10px;
+			font-weight: 600;
+            float: left;
+            font-size: 20px;
+            color: #222;
+		}
+	}
+
+	.modal-body {
+		height: 60%;
+		display: flex;
+		flex-direction: column;
+
+		div {
+			width: 100%;
+			margin-bottom: 4px;
+			display: flex;
+			flex-wrap: wrap;
+
+			.col-25 {
+				width: 25%;
+				padding-top: 8px;
+				
+				span {
+					font-size: 15px;
+					font-weight: 600;
+					text-transform:capitalize;
+				}
+			}
+
+			.col-75 {
+				width: 75%;
+
+				input {
+					width: 100%;
+					padding: 6px;
+					border: none;
+					border: 1px solid #ccc;
+					font-size: 15px;
+					border-radius: 8px;
+
+					&:focus {
+						outline: none;
+					}
+                }
+                
+                select {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    -ms-appearance: none;
+                    appearance: none;
+                    outline: 0;
+                    box-shadow: none;
+                    border: 0 !important;
+                    background: #ddd;
+                    background-image: none;
+                  }
+                  /* Remove IE arrow */
+                  select::-ms-expand {
+                    display: none;
+                  }
+                  /* Custom Select */
+                  .select {
+                    position: relative;
+                    display: flex;
+                    width: 24em;
+                    height: 3em;
+                    line-height: 3;
+                    background: #2c3e50;
+                    overflow: hidden;
+                    border-radius: .25em;
+
+                    select {
+                        flex: 1;
+                        padding: 0 .5em;
+                        color: #333;
+                        cursor: pointer;
+                      }
+                  }
+                  
+                  /* Arrow */
+                  .select::after {
+                    content: '\25BC';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    background: #34495e;
+                    cursor: pointer;
+                    pointer-events: none;
+                    -webkit-transition: .25s all ease;
+                    -o-transition: .25s all ease;
+                    transition: .25s all ease;
+                  }
+                  /* Transition */
+                  .select:hover::after {
+                    color: #f39c12;
+                  }
+                  
+			}
+		}
+
+		.delete-item {
+			margin: 20px 0px;
+			font-size: 16px;
+			font-weight: 500;
+		}
+	}
+	.modal-footer {
+		height: 20%;
+		float: right;
+	}
+}
+
+#err-dialog {
+
+	#content-dialog {
+		font-size: 16px;
+		font-weight: 500;
+		margin-bottom: 30px;
+	}
+
+	#footer-dialog {
+		float: right;
+	}
+}

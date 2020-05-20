@@ -5,6 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 // import Combobox from 'react-widgets/lib/Combobox';
 import Combobox from '../../components/core/ComboBox/ComboBox';
 import { Redirect } from 'react-router-dom';
+import Button from '../../components/core/Button/Button';
 
 function Home({ getListRooms, listRoom }) {
     const [arrPagination, setArrPagination] = useState([]);
@@ -30,6 +31,10 @@ function Home({ getListRooms, listRoom }) {
             renderPagination(currentPage);
         }
     }, [listRoom, currentPage])
+
+    function onSearch() {
+
+    }
 
     function showPage(selectedPage) {
         if (currentPage === selectedPage) return;
@@ -96,27 +101,90 @@ function Home({ getListRooms, listRoom }) {
         </div>
     ))
 
-    const arr = [
+    const arrAddress = [
         {
-            name: "123",
-            value: "123"
+            name: "Ba Đình",
+            value: "Ba Đình"
         },
         {
-            name: "234",
-            value: "234"
-        }
+            name: "Bắc Từ Liêm",
+            value: "Bắc Từ Liêm",
+        },
+        {
+            name: "Cầu Giấy",
+            value: "Cầu Giấy",
+        },
+        {
+            name: "Đống Đa",
+            value: "Đống Đa",
+        },
+        {
+            name: "Hà Đông",
+            value: "Hà Đông",
+        },
+        {
+            name: "Hai Bà Trưng",
+            value: "Hai Bà Trưng",
+        },
+        {
+            name: "Hoàn Kiếm",
+            value: "Hoàn Kiếm",
+        },
+        {
+            name: "Hoàng Mai",
+            value: "Hoàng Mai",
+        },
+        {
+            name: "Long Biên",
+            value: "Long Biên",
+        },
+        {
+            name: "Nam Từ Liêm",
+            value: "Nam Từ Liêm",
+        },
+        {
+            name: "Tây Hồ",
+            value: "Tây Hồ",
+        },
+        {
+            name: "Thanh Xuân",
+            value: "Thanh Xuân",
+        },     
+    ]
+    const arrPrice = [
+        {
+            name: "1.000.000",
+            value: "1000000",
+        },
+        {
+            name: "2.000.000",
+            value: "2000000",
+        },
+        {
+            name: "3.000.000",
+            value: "3000000",
+        },
     ]
     return (
         <div className="core-home">
             <div className="search">
                 <span>
                     <Combobox
-                        data={arr}
+                        optionDefault={"Chọn quận"}
+                        data={arrAddress}
                     />
                 </span>
                 <span>
                     <Combobox
-                        data={arr}
+                        optionDefault={"Chọn giá"}
+                        data={arrPrice}
+                    />
+                </span>
+                <span>
+                    <Button
+                        cls={'btn-submit'}
+                        handleClick={onSearch}
+                        title={'Tìm kiếm'}
                     />
                 </span>
             </div>

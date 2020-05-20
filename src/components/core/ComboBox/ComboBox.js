@@ -1,7 +1,7 @@
 import React from 'react';
 import './ComboBox.scss';
 
-const ComboBox = ({ data }) => {
+const ComboBox = ({ optionDefault, data }) => {
 
     const listItem = data.map((item, index) => (
         <option key={index} value={item.value}>{item.name}</option>
@@ -9,7 +9,7 @@ const ComboBox = ({ data }) => {
     return (
         <span className="core-combobox">
             <select>
-                <option defaultValue>Choose item</option>
+                <option selected disabled >{optionDefault}</option>
                 {listItem}
             </select>
         </span>

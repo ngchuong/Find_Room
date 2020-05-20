@@ -1,19 +1,22 @@
 .core-combobox {
-    // position: relative;
-    // display: none;
-    select {
-        width: 200px;
-        height: 50px;
-        background-color: #66a3ff;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 500;
-        option {
-            cursor: pointer;
-            padding: 30px;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #2c3e50;
+    overflow: hidden;
+    border-radius: .25em;
+    padding: 12px;
 
-            background-color: #66a3ff;
-            font-size: 12px;
-        }
+    select {
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 0 !important;
+        background: #2c3e50;
+        background-image: none;
+        padding: 0 .5em;
+        color: #fff;
+        cursor: pointer;
     }
 }
+  

@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header/header';
+import ContainerHeader from '../containers/ContainerHeader.js';
 import Footer from '../components/Footer/footer';
 import MainContent from '../components/MainContent/MainContent';
 
 const MainLayout = () => (
     <div id="main-layout">
-        <Header />
+        <ContainerHeader />
         <MainContent />
         <Footer />
     </div>
