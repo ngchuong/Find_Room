@@ -1,5 +1,5 @@
 .core-combobox {
-    width: 20em;
+    width: 22em;
     height: 3em;
     line-height: 3;
     background: #2c3e50;
@@ -8,6 +8,7 @@
     padding: 12px;
 
     select {
+        width: 25%;
         appearance: none;
         outline: 0;
         box-shadow: none;
@@ -17,6 +18,11 @@
         padding: 0 .5em;
         color: #fff;
         cursor: pointer;
+        font-size: 18px;
+
+        option {
+            font-size: 18px;
+        }
     }
 }
   

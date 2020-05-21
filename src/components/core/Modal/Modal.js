@@ -3,8 +3,7 @@ import './Modal.scss';
 import Modal from 'react-modal';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import ComboBox from '../ComboBox/ComboBox';
-import { Combobox } from 'react-widgets';
+// import ComboBox from '../ComboBox/ComboBox';
 
 const customStyle = {
     content: {
@@ -38,6 +37,9 @@ function ModalForm({ data, isOpen, isClose }) {
     }, [data])
 
     const onDataSubmit = () => {
+
+    }
+    const cancelForm = () => {
 
     }
 
@@ -137,8 +139,8 @@ function ModalForm({ data, isOpen, isClose }) {
                         )}
                     </div>
                     <div className="modal-footer">
-                        <Button cls="btn-submit" title={'Đăng bài'} onHandle={onDataSubmit} />
-                        <Button cls="btn-cancel" title={'Huỷ'} onHandle={isClose} />
+                        <Button cls="btn-submit" title={'Đăng bài'} handleClick={onDataSubmit} />
+                        <Button cls="btn-cancel" title={'Huỷ'} handleClick={isClose} />
                     </div>
                 </div>
             </Modal>

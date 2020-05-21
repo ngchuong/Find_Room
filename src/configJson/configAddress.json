@@ -1,51 +1,51 @@
 {
     "arrAddress": [
         {
-            "name": "Ba Đình",
+            "label": "Ba Đình",
             "value": "Ba Đình"
         },
         {
-            "name": "Bắc Từ Liêm",
+            "label": "Bắc Từ Liêm",
             "value": "Bắc Từ Liêm"
         },
         {
-            "name": "Cầu Giấy",
+            "label": "Cầu Giấy",
             "value": "Cầu Giấy"
         },
         {
-            "name": "Đống Đa",
+            "label": "Đống Đa",
             "value": "Đống Đa"
         },
         {
-            "name": "Hà Đông",
+            "label": "Hà Đông",
             "value": "Hà Đông"
         },
         {
-            "name": "Hai Bà Trưng",
+            "label": "Hai Bà Trưng",
             "value": "Hai Bà Trưng"
         },
         {
-            "name": "Hoàn Kiếm",
+            "label": "Hoàn Kiếm",
             "value": "Hoàn Kiếm"
         },
         {
-            "name": "Hoàng Mai",
+            "label": "Hoàng Mai",
             "value": "Hoàng Mai"
         },
         {
-            "name": "Long Biên",
+            "label": "Long Biên",
             "value": "Long Biên"
         },
         {
-            "name": "Nam Từ Liêm",
+            "label": "Nam Từ Liêm",
             "value": "Nam Từ Liêm"
         },
         {
-            "name": "Tây Hồ",
+            "label": "Tây Hồ",
             "value": "Tây Hồ"
         },
         {
-            "name": "Thanh Xuân",
+            "label": "Thanh Xuân",
             "value": "Thanh Xuân"
         }
     ]

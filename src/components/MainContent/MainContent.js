@@ -2,9 +2,8 @@ import React from 'react';
 import './MainContent.scss';
 import Room from '../../containers/Room';
 import PageLogin from '../../containers/ContainerLogin.js';
-import PageRegister from '../../containers/ContainerRegisterUser.js';
-// import LoginPage from '../../pages/Login/LoginPage.js';
-import RegisterPage from '../../pages/Register/Register.js';
+import PageRegister from '../../containers/ContainerRegisterUser.js';   
+
 import {
     BrowserRouter as Router,
     Switch,

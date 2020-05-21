@@ -6,8 +6,6 @@ import Button from '../core/Button/Button';
 import ModalForm from '../core/Modal/Modal';
 
 import {
-    NavLink,
-    Redirect,
 } from "react-router-dom";
 
 const Header = ({ listRoom, changeTypeRoom }) => {
@@ -16,7 +14,7 @@ const Header = ({ listRoom, changeTypeRoom }) => {
 
     useEffect(() => {
         changeTypeRoom(typeRoom);
-    }, [typeRoom])
+    })
 
     const redirectPageLogin = () => {
         // return <Redirect to="/login" />
@@ -32,10 +30,10 @@ const Header = ({ listRoom, changeTypeRoom }) => {
     }
 
     const changeTypeRoom1 = () => {
-        setTypeRoom(1);
+        setTypeRoom("1");
     }
     const changeTypeRoom2 = () => {
-        setTypeRoom(2);
+        setTypeRoom("2");
     }
     const openModal = useCallback(() => {
         setIsModalVisible(true);

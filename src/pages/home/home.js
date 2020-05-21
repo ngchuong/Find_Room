@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import './home.scss';
-import Input from '../../components/core/Input/Input';
 import 'font-awesome/css/font-awesome.min.css';
 // import Combobox from 'react-widgets/lib/Combobox';
 import Combobox from '../../components/core/ComboBox/ComboBox';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom'; 
 import Button from '../../components/core/Button/Button';
+import Select from 'react-select';
+
 
 import ConfigAddress from '../../configJson/configAddress.json';
 import ConfigPrice from '../../configJson/configPrice.json';
@@ -17,7 +18,6 @@ function Home({ getListRooms, listRoom, typeRoom }) {
     const [arrPagination, setArrPagination] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-
     const limitRecordOfPage = 5;
     const limitPage = 5;
     const totalPage = Math.ceil(listRoom.length / limitPage);
@@ -26,7 +26,6 @@ function Home({ getListRooms, listRoom, typeRoom }) {
     let endIndex = null;
 
     let startPagination = <a href="/#">First</a>;
-    // let bodyPagination = null;
     let endPagination = <a href="/#">Last</a>;
 
     useEffect(() => {
@@ -39,9 +38,6 @@ function Home({ getListRooms, listRoom, typeRoom }) {
         }
     }, [listRoom, currentPage])
 
-    function onSearch() {
-
-    }
 
     function showPage(selectedPage) {
         if (currentPage === selectedPage) return;
@@ -84,10 +80,11 @@ function Home({ getListRooms, listRoom, typeRoom }) {
     const showDetail = (e) => {
 
     }
+
     let newListRoom = listRoom.slice((currentPage - 1) * limitRecordOfPage, currentPage * limitRecordOfPage);
     let newListRoomByType = [];
     for (let i = 0; i < newListRoom.length; i++) {
-        if (typeRoom == newListRoom[i].type_room) {
+        if (typeRoom === newListRoom[i].type_room) {
             newListRoomByType = [...newListRoomByType, newListRoom[i]];
         }
     }
@@ -95,55 +92,126 @@ function Home({ getListRooms, listRoom, typeRoom }) {
         newListRoom = newListRoomByType;
     }
 
+
+    const [getAddress, setAddress] = useState({ label: "", value: "" });
+    const [getPrice, setPrice] = useState({ label: "", value: "" });
+    const handleInputChange = (e) => {
+        setAddress(e);
+    }
+    const handleInputChange1 = (e) => {
+        setPrice(e);
+    }
+
+    const [dataSearch, setDataSearch] = useState([]);
+    const [isSearch, setIsSearch] = useState(false);
+    function onSearch(e) {
+        e.preventDefault();
+        let newData = [];
+
+        for (let i = 0; i < newListRoom.length; i++) {
+            let stringAddress = newListRoom[i].address;
+            if (getAddress.value !== "" && getPrice.value !== "") {
+                // so sanh chuoi tim kiem, so sanh gia tri +- 500000
+                if (stringAddress.toLowerCase().indexOf(getAddress.value.toLowerCase()) > 0 ||
+                    Math.abs(newListRoom[i].price - getPrice.value) <= 500000) {
+                    newData = [...newData, newListRoom[i]]
+
+                }
+
+            } else if (getAddress.value !== "") {
+                if (stringAddress.toLowerCase().indexOf(getAddress.value.toLowerCase()) > 0) {
+                    newData = [...newData, newListRoom[i]]
+                }
+            } else if (getPrice.value !== "") {
+                if (Math.abs(newListRoom[i].price - getPrice.value) <= 500000) {
+                    newData = [...newData, newListRoom[i]]
+                }
+            }
+        }
+        if (newData.length <= 0) {
+            setIsSearch(true);
+        }
+        setDataSearch(newData);
+    }
+
     console.log(newListRoom);
 
     let titleContent = "";
-    if (typeRoom === 1) {
+    if (typeRoom === "1") {
         titleContent = "Danh sách phòng cho thuê";
-    } else if (typeRoom === 2) {
+    } else if (typeRoom === "2") {
         titleContent = "Danh sách phòng để bán";
     } else {
         titleContent = "Danh sách tất cả các phòng";
     }
-    const showListRoom = newListRoom.map((room, index) => {
-        return (
-            <div className="container" key={index}>
-                <div className="image">
-                    <img width="150px" height="200px" src={JSON.parse(room.path)[0]} alt="no-img" />
-                    <span className="image-total" >{JSON.parse(room.path).length}</span>
-                </div>
-                <div className="main-content">
-                    <label className="title" onClick={showDetail(room.id)}>{room.title}</label>
-                    <label className="address">{room.address}</label>
-                    <div className="icon">
-                        <label className="bed"><i className="fa fa-bed">: {room.bed}</i></label>
-                        <label className="bath"><i className="fa fa-bath">: {room.bathroom}</i></label>
-                        <label className="square"><i className="fa fa-square"> {room.acreage} m2</i></label>
+    if (dataSearch.length > 0) {
+        titleContent = "Danh sách kết quả tìm được: ";
+    }
+
+    let showListRoom;
+    if (newListRoom.length === 0) {
+        showListRoom = "Không có kết quả nào !"
+    } else {
+        // let data;
+        // if (isSearch) {
+        //     if (dataSearch.length > 0) {
+        //         data = dataSearch;
+        //     } else {
+        //         showListRoom = "Không tìm thấy kết quả !"
+        //     }
+        // } else {
+
+        // }
+
+        showListRoom = (dataSearch.length > 0 ? dataSearch : newListRoom).map((room, index) => {
+            return (
+                <div className="container" key={index}>
+                    <div className="image">
+                        <img width="150px" height="200px" src={JSON.parse(room.path)[0]} alt="no-img" />
+                        <span className="image-total" >{JSON.parse(room.path).length}</span>
                     </div>
-                    <label className="type-room">Kiểu phòng: {(room.type_room === "1") ? "Cho thuê" : "Bán"}</label>
-                    <label className="price">Giá: {room.price} VND</label>
-                    <div className="infor">
-                        <label className="date">Ngày đăng: {room.date_created.slice(0, 10)}</label>
-                        <label className="phone"><i className="fa fa-phone"> {room.phone_number}</i></label>
+                    <div className="main-content">
+                        <label className="title" onClick={showDetail(room.id)}>{room.title}</label>
+                        <label className="address">{room.address}</label>
+                        <div className="icon">
+                            <label className="bed"><i className="fa fa-bed">: {room.bed}</i></label>
+                            <label className="bath"><i className="fa fa-bath">: {room.bathroom}</i></label>
+                            <label className="square"><i className="fa fa-square"> {room.acreage} m2</i></label>
+                        </div>
+                        <label className="type-room">Kiểu phòng: {(room.type_room === "1") ? "Cho thuê" : "Bán"}</label>
+                        <label className="price">Giá: {room.price} VND</label>
+                        <div className="infor">
+                            <label className="date">Ngày đăng: {room.date_created.slice(0, 10)}</label>
+                            <label className="phone"><i className="fa fa-phone"> {room.phone_number}</i></label>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
-    })
+            )
+        })
+    }
 
     return (
         <div className="core-home">
             <div className="search">
                 <span>
-                    <Combobox
-                        optionDefault={"Chọn quận"}
-                        data={dataAddress}
+                    <Select
+                        placeholder={'Chọn quận'}
+                        className={"select-option"}
+                        onChange={handleInputChange}
+                        defaultValue={getAddress.label}
+                        options={dataAddress}
+                        isSearchable
+                    // onInputValue={getAddress}
                     />
                 </span>
                 <span>
-                    <Combobox
-                        optionDefault={"Chọn giá"}
-                        data={dataPrice}
+                    <Select
+                        placeholder={'Chọn giá'}
+                        className={"select-option"}
+                        onChange={handleInputChange1}
+                        defaultValue={getPrice.label}
+                        options={dataPrice}
+                        isSearchable
                     />
                 </span>
                 <span>

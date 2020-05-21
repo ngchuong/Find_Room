@@ -39,6 +39,8 @@ function RegisterPage({ createUser }) {
                 txtPwd,
             }
             createUser(params);
+        } else {
+            console.log("Mật khẩu không trùng nhau !")
         }
 
     }

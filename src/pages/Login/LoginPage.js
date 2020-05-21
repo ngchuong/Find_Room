@@ -3,12 +3,12 @@ import './LoginPage.scss';
 import Input from '../../components/core/Input/Input';
 import Button from '../../components/core/Button/Button';
 
-import { Redirect, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function LoginPage({ getUsers, users }) {
     useEffect(() => {
         getUsers();
-    }, [])
+    })
 
     // console.log(users)
     const [txtUserName, setTxtUserName] = useState('');
@@ -37,6 +37,8 @@ function LoginPage({ getUsers, users }) {
                     window.location.href = "http://localhost:3000";
 
                     console.log("oke!");
+                } else {
+                    console.log('failed');
                 }
             }
         }
