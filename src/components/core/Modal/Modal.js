@@ -16,7 +16,7 @@ const customStyle = {
         transform: 'translate(-50%, -50%)',
         borderStyle: 'solid',
         borderWidth: '2px',
-        overflowY: 'auto'
+        overflowY: 'auto',
     }
 }
 

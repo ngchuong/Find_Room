@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './home.scss';
 import 'font-awesome/css/font-awesome.min.css';
-// import Combobox from 'react-widgets/lib/Combobox';
-import Combobox from '../../components/core/ComboBox/ComboBox';
 // import { Redirect } from 'react-router-dom'; 
+
 import Button from '../../components/core/Button/Button';
 import Select from 'react-select';
 
@@ -167,10 +166,10 @@ function Home({ getListRooms, listRoom, typeRoom }) {
             return (
                 <div className="container" key={index}>
                     <div className="image">
-                        <img width="150px" height="200px" src={JSON.parse(room.path)[0]} alt="no-img" />
+                        <img src={JSON.parse(room.path)[0]} alt="no-img" />
                         <span className="image-total" >{JSON.parse(room.path).length}</span>
                     </div>
-                    <div className="main-content">
+                    <div className="main-content-item">
                         <label className="title" onClick={showDetail(room.id)}>{room.title}</label>
                         <label className="address">{room.address}</label>
                         <div className="icon">

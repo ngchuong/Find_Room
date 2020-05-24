@@ -7,7 +7,7 @@ $size-price: 22px;
 .core-home {
     width: 100%;
     height: auto;
-    z-index: 0;
+    z-index: 1;
     margin-bottom: 20px;
     border: solid 1px #c1c1c1;
 
@@ -16,21 +16,20 @@ $size-price: 22px;
         background-color: #ddd;
         height: 60px;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         position: relative;
+        align-items: center;
 
         .select-option {
-            position: absolute;
-            z-index: 99;
-            width: 30%;
+            // position: absolute;
+            // z-index: 99;
+            // width: 30%;
 
         }
 
         span {
-            // margin-top: 600px;
-            // padding-top: 20px;
             width: 30%;
-            margin-right: 2%;
+            // margin-right: 2%;
         }
     }
 
@@ -57,47 +56,41 @@ $size-price: 22px;
             border: solid 1px $color-gray;
             border-radius: 5px;
             margin-top: 10px;
+            padding: 5px;
             overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 0px;
+            align-items: center;
     
             &:hover {
                 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
             }
             
-            .image {
-                width: 270px;
-                height: 220px;
-                padding-top: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
+            .image {    
+                width: 230px;
+                height: 200px;
+                overflow: hidden;
                 position: relative;
                 // z-index: 11;
 
-                img {
-                    position: absolute;
-                    top: 10px;
-                    right: 60px;
-                }
                 .image-total {
                     position: absolute;
                     padding: 8px;
                     background-color: #4287f5;
-                    top: 10px;
-                    right: 60px;
-                    z-index: 11;
+                    top: 0;
+                    right: 0;
+                    // z-index: 11;
                     color: #fff;
                 }
             }
             
-            .main-content {
+            .main-content-item {
                 background-color: $color-white;
-                margin: 0 auto;
-                float: left;
                 display: flex;
                 flex-direction: column;
-                // padding: 10px 0px;
                 height: inherit;
                 color: #222;
-                margin-left: -20px;
     
                 .title {
                     font-size: $size-title;
