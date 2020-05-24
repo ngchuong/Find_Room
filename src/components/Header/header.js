@@ -8,9 +8,11 @@ import ModalForm from '../core/Modal/Modal';
 import {
 } from "react-router-dom";
 
-const Header = ({ listRoom, changeTypeRoom }) => {
+const Header = ({ listRoom, changeTypeRoom, createRoom }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [typeRoom, setTypeRoom] = useState(null);
+
+    let isLogin = localStorage.getItem('userInfo');
 
     useEffect(() => {
         changeTypeRoom(typeRoom);
@@ -41,7 +43,16 @@ const Header = ({ listRoom, changeTypeRoom }) => {
     const closeModal = useCallback(() => {
         setIsModalVisible(false);
     }, [])
-    let isLogin = localStorage.getItem('userInfo');
+
+    const createPost = (data) => {
+        let newData = {};
+        if (isLogin) {
+            newData = { ...data, id_user: JSON.parse(isLogin).id };
+        }
+        createRoom(newData)
+        setIsModalVisible(false);
+    }
+
     return (
         <div className="main-header">
             <div className="main-sub-header">
@@ -70,8 +81,6 @@ const Header = ({ listRoom, changeTypeRoom }) => {
                         <span>
                             <Button handleClick={openModal} title="POST" cls="btn-post" />
                         </span>
-
-                        {/* <button className="button-login"><span>login</span></button> */}
                     </span>
                 </div>
             </div>
@@ -79,6 +88,7 @@ const Header = ({ listRoom, changeTypeRoom }) => {
                 isOpen={isModalVisible}
                 isClose={closeModal}
                 data={listRoom}
+                onCreate={createPost}
             />
         </div>
     )

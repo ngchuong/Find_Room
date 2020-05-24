@@ -31,6 +31,7 @@ function LoginPage({ getUsers, users }) {
             for (let i = 0; i < users.length; i++) {
                 if (users[i].phone_number && users[i].password) {
                     localStorage.setItem("userInfo", JSON.stringify({
+                        id: users[i].id,
                         username: txtUserName,
                         password: txtPwd,
                     }))

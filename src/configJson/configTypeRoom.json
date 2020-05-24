@@ -1,0 +1,12 @@
+{
+    "arrTypeRoom":[
+        {
+            "label": "Cho thuê",
+            "value": "1"
+        },
+        {
+            "label": "Để bán",
+            "value": "2"
+        }
+    ]
+}

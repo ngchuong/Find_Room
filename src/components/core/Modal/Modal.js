@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 // import ComboBox from '../ComboBox/ComboBox';
+import Select from 'react-select';
+import dataTypeRoom from '../../../configJson/configTypeRoom.json';
 
 const customStyle = {
     content: {
@@ -20,42 +22,47 @@ const customStyle = {
     }
 }
 
-function ModalForm({ data, isOpen, isClose }) {
+function ModalForm({ data, isOpen, isClose, onCreate }) {
     Modal.setAppElement('body');
 
+    const arrTypeRoom = dataTypeRoom.arrTypeRoom;
+
     const [formData, setFormData] = useState({});
-    const [err, setErr] = useState(false);
+    // const [err, setErr] = useState(false);
 
-    useEffect(() => {
-        if (data == null) {
-            setFormData({})
-        } else {
-            if (data) {
-                setFormData({ ...data })
-            }
-        }
-    }, [data])
-
-    const onDataSubmit = () => {
-
-    }
-    const cancelForm = () => {
-
-    }
-
-    let newData = [];
+    let listField = [];
     if (data.length > 0) {
         for (const key in data[0]) {
-            newData = [...newData, key];
+            listField = [...listField, key];
         }
     }
-    const fileSelected = () => {
 
+    const onChangeInput = (e, item) => {
+        let valueInput = e.target.value;
+        setFormData({ ...formData, [item]: valueInput });
     }
 
-    const onChangeInput = (e) => {
-
+    const onChangeSelect = (e) => {
+        setFormData({ ...formData, type_room: e.value });
     }
+    const fileSelected = (e) => {
+        // console.log(e.target.files[0].name);
+        let listImage = []
+        const images = e.target.files
+        for (let i = 0; i < images.length; i++) {
+            // console.log(images[i].name)
+            listImage = [...listImage, images[i].name];
+        }
+        setFormData({ ...formData, listImage })
+    }
+    const onDataSubmit = (e) => {
+        e.preventDefault();
+        // const arrValue = {...formData};
+        // let newData = Object.values(arrValue);
+        onCreate && onCreate(formData);
+    }
+
+
     return (
         <div id="container-modal">
             <Modal
@@ -68,7 +75,7 @@ function ModalForm({ data, isOpen, isClose }) {
                         <label>Đăng bài cho thuê phòng</label>
                     </div>
                     <div className="modal-body">
-                        {newData.map((item, index) => {
+                        {listField.map((item, index) => {
                             if (item === "title") {
                                 return (
                                     <div key={index}>
@@ -78,7 +85,10 @@ function ModalForm({ data, isOpen, isClose }) {
                                         <div className="col-75">
                                             <Input
                                                 type={"text"}
+                                                value={formData[item] || ''}
+                                                item={item}
                                                 placeholderOfInput={item}
+                                                onChange={onChangeInput}
                                             />
                                         </div>
                                     </div>
@@ -95,11 +105,11 @@ function ModalForm({ data, isOpen, isClose }) {
                                         </div>
                                         <div className="col-75">
                                             <Input
-                                                type="number"
+                                                type={"number"}
+                                                value={formData[item] || ''}
+                                                item={item}
                                                 placeholderOfInput={item}
-                                                multiple
                                                 onChange={onChangeInput}
-
                                             />
                                         </div>
                                     </div>
@@ -112,7 +122,9 @@ function ModalForm({ data, isOpen, isClose }) {
                                             <span>Image</span>
                                         </div>
                                         <div className="col-75">
-                                            <input type="file" multiple onChange={fileSelected} />
+                                            <form encType="multipart/form-data">
+                                                <input type="file" multiple onChange={fileSelected} />
+                                            </form>
                                         </div>
                                     </div>
                                 )
@@ -124,13 +136,13 @@ function ModalForm({ data, isOpen, isClose }) {
                                             <span>{item}</span>
                                         </div>
                                         <div className="col-75">
-                                            <div className="select">
-                                                <select>
-                                                    <option value="1">Thuê</option>
-                                                    <option value="2">Bán</option>
-                                                </select>
-                                            </div>
-
+                                            <Select
+                                                className={"select-option"}
+                                                placeholder={'Chọn kiểu phòng'}
+                                                onChange={onChangeSelect}
+                                                defaultValue={arrTypeRoom.label}
+                                                options={arrTypeRoom}
+                                            />
                                         </div>
                                     </div>
                                 )

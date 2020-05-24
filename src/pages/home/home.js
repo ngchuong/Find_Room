@@ -114,7 +114,6 @@ function Home({ getListRooms, listRoom, typeRoom }) {
                 if (stringAddress.toLowerCase().indexOf(getAddress.value.toLowerCase()) > 0 ||
                     Math.abs(newListRoom[i].price - getPrice.value) <= 500000) {
                     newData = [...newData, newListRoom[i]]
-
                 }
 
             } else if (getAddress.value !== "") {
@@ -133,7 +132,7 @@ function Home({ getListRooms, listRoom, typeRoom }) {
         setDataSearch(newData);
     }
 
-    console.log(newListRoom);
+    // console.log(newListRoom);
 
     let titleContent = "";
     if (typeRoom === "1") {
@@ -195,18 +194,15 @@ function Home({ getListRooms, listRoom, typeRoom }) {
                 <span>
                     <Select
                         placeholder={'Chọn quận'}
-                        className={"select-option"}
                         onChange={handleInputChange}
                         defaultValue={getAddress.label}
                         options={dataAddress}
                         isSearchable
-                    // onInputValue={getAddress}
                     />
                 </span>
                 <span>
                     <Select
                         placeholder={'Chọn giá'}
-                        className={"select-option"}
                         onChange={handleInputChange1}
                         defaultValue={getPrice.label}
                         options={dataPrice}
