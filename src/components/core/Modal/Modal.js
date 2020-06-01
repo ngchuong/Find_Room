@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Modal.scss';
 import Modal from 'react-modal';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-// import ComboBox from '../ComboBox/ComboBox';
+
 import Select from 'react-select';
 import dataTypeRoom from '../../../configJson/configTypeRoom.json';
 
@@ -76,7 +76,7 @@ function ModalForm({ data, isOpen, isClose, onCreate }) {
                     </div>
                     <div className="modal-body">
                         {listField.map((item, index) => {
-                            if (item === "title") {
+                            if (item === "title" || item === "address") {
                                 return (
                                     <div key={index}>
                                         <div className="col-25">
@@ -156,8 +156,7 @@ function ModalForm({ data, isOpen, isClose, onCreate }) {
                     </div>
                 </div>
             </Modal>
-
-        </div >
+        </div>
     );
 }
 

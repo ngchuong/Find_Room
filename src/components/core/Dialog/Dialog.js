@@ -15,7 +15,7 @@ const Dialog = ({ message, showDialog }) => {
             transform: 'translate(-50%, -50%)',
             borderStyle: 'solid',
             borderWidth: '2px',
-            borderColor: '#00cc00'
+            borderColor: '#139130'
         }
     }
     Modal.setAppElement('body');

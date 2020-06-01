@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './LoginPage.scss';
 import Input from '../../components/core/Input/Input';
 import Button from '../../components/core/Button/Button';
-
 import { NavLink } from 'react-router-dom';
 
 function LoginPage({ getUsers, users }) {

@@ -3,7 +3,6 @@ import './Register.scss';
 import Input from '../../components/core/Input/Input';
 import Button from '../../components/core/Button/Button';
 import { NavLink } from 'react-router-dom';
-import DialogRender from '../../containers/Dialog';
 
 function RegisterPage({ createUser }) {
     const [txtUserName, setTxtUserName] = useState('');
@@ -83,7 +82,7 @@ function RegisterPage({ createUser }) {
                                 placeholderOfInput={'Mật khẩu'}
                                 value={txtPwd}
                                 onChange={onChangeInput}
-                                type={"text"}
+                                type={"password"}
                             />
                         </div>
                         <div>
@@ -92,7 +91,7 @@ function RegisterPage({ createUser }) {
                                 value={txtRePwd}
                                 placeholderOfInput={'Nhập lại mật khẩu'}
                                 onChange={onChangeInput}
-                                type={"text"}
+                                type={"password"}
                             />
                         </div>
                     </div>
@@ -105,7 +104,7 @@ function RegisterPage({ createUser }) {
                     </div>
                 </div>
             </div>
-            <DialogRender />
+
         </div>
     )
 }

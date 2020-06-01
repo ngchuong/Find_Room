@@ -16,18 +16,17 @@ export const getRoomListFactory = () => {
 
 export const createRoomSagaFactory = () => {
     const createRoom = async (room) => {
-        console.log(room)
         const reqBody = {
+            arr_image: JSON.stringify(room.listImage),
             title: room.title,
+            address: room.address,
             acreage: room.acreage,
             bed: room.bed,
             bathroom: room.bathroom,
             price: room.price,
-            arr_image: JSON.stringify(room.listImage),
             id_user: room.id_user,
             type_room: room.type_room
         };
-        console.log(reqBody);
         const response = await axios.post('http://localhost:80/API_PHP/room/createRoom.php', reqBody, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
@@ -36,7 +35,6 @@ export const createRoomSagaFactory = () => {
             throw new Error('Get data failed !')
         }
         const result = response.data;
-        console.log(result)
         return result;
     }
     return createRoom;

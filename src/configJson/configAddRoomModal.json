@@ -1,0 +1,40 @@
+{
+    "arrFieldRoom":[
+        {
+            "label": "Tiêu đề",
+            "dataType": "text"
+        },
+        {
+            "label": "Địa chỉ",
+            "dataType": "text"
+        },
+        {
+            "label": "Diện tích (m2)",
+            "dataType": "number"
+        },
+        {
+            "label": "Số giường",
+            "dataType": "number"
+        },
+        {
+            "label": "Số phòng tắm",
+            "dataType": "number"
+        },
+        {
+            "label": "Số giường",
+            "dataType": "number"
+        },
+        {
+            "label": "Giá phòng",
+            "dataType": "number"
+        },
+        {
+            "label": "Kiểu phòng",
+            "dataType": "select-option"
+        },
+        {
+            "label": "Ảnh",
+            "dataType": "file"
+        }
+    ]
+}

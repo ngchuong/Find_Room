@@ -17,7 +17,7 @@ function Home({ getListRooms, listRoom, typeRoom }) {
     const [arrPagination, setArrPagination] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const limitRecordOfPage = 5;
+    const limitRecordOfPage = 6;
     const limitPage = 5;
     const totalPage = Math.ceil(listRoom.length / limitPage);
 
@@ -41,7 +41,7 @@ function Home({ getListRooms, listRoom, typeRoom }) {
     function showPage(selectedPage) {
         if (currentPage === selectedPage) return;
         setCurrentPage(selectedPage);
-        renderPagination(currentPage);
+        renderPagination(selectedPage);
     }
 
     function renderPagination(currentPage) {
@@ -90,7 +90,6 @@ function Home({ getListRooms, listRoom, typeRoom }) {
     if (typeRoom !== null) {
         newListRoom = newListRoomByType;
     }
-
 
     const [getAddress, setAddress] = useState({ label: "", value: "" });
     const [getPrice, setPrice] = useState({ label: "", value: "" });

@@ -8,7 +8,7 @@ import ModalForm from '../core/Modal/Modal';
 import {
 } from "react-router-dom";
 
-const Header = ({ listRoom, changeTypeRoom, createRoom }) => {
+const Header = ({ listRoom, changeTypeRoom, createRoom, pushDialogErr }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [typeRoom, setTypeRoom] = useState(null);
 
@@ -38,7 +38,11 @@ const Header = ({ listRoom, changeTypeRoom, createRoom }) => {
         setTypeRoom("2");
     }
     const openModal = useCallback(() => {
-        setIsModalVisible(true);
+        if (!isLogin) {
+            pushDialogErr()
+        } else {
+            setIsModalVisible(true);
+        }
     }, [])
     const closeModal = useCallback(() => {
         setIsModalVisible(false);

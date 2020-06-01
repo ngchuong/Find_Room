@@ -27,7 +27,7 @@ function* createRoomSaga(action) {
     try {
         const api = createRoomSagaFactory();
         const response = yield call(api, room);
-
+        console.log(response);
         yield put(createRoom.succeed(response));
     } catch (err) {
         yield put(createRoom.failed(err));
